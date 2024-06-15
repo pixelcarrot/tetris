@@ -9,7 +9,6 @@ class ImageManager
 {
 public:
     sf::Texture* Get(const std::string& strId);
-    // Other existing methods...
 
 private:
     std::unordered_map<std::string, sf::Texture*> textures;
