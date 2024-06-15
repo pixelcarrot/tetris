@@ -54,6 +54,7 @@
 // HIGH SCORES
 #define HIGH_SCORES "data/highscores.ngn"
 // FONT
+#define ARIAL "data/font/arial.ttf"
 #define TRON "data/font/tron.ttf"
 #define TRANSFORMERS "data/font/transformers.ttf"
 // SFX TRACK
