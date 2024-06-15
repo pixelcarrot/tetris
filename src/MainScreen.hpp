@@ -75,14 +75,18 @@ public:
             PushSprite(tetris);
         }
 
-        sf::Text *author = new sf::Text();
-        author->setString("Programmed by Nguyen");
-        author->setCharacterSize(16);
-        author->setFillColor(sf::Color::Black);
-        author->setPosition(GAME_WIDTH - 2, GAME_HEIGHT - 22);
-        AlignRight(*author);
-
-        PushTitle(author);
+        sf::Font *arial = GlobalFontManager.Get(ARIAL);
+        if (arial)
+        {
+            sf::Text *author = new sf::Text();
+            author->setFont(*arial);
+            author->setString("Copyright 2011 Nguyen. All rights reserved.");
+            author->setCharacterSize(14);
+            author->setFillColor(sf::Color::Black);
+            author->setPosition(GAME_WIDTH - 2, GAME_HEIGHT - 22);
+            AlignRight(*author);
+            PushTitle(author);
+        }
     }
 };
 
