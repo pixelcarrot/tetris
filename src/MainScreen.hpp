@@ -10,72 +10,80 @@
 class MainScreen : public MenuScreen
 {
 public:
-	MainScreen() : MenuScreen()
-	{
-		SetKeyNext(sf::Key::Down);
-		SetKeyPrev(sf::Key::Up);
+    MainScreen() : MenuScreen()
+    {
+        SetKeyNext(sf::Keyboard::Down);
+        SetKeyPrev(sf::Keyboard::Up);
 
-		SetNormalColor(sf::Color::Black);
-		SetChooseColor(sf::Color::Cyan);
+        SetNormalColor(sf::Color::Black);
+        SetChooseColor(sf::Color::Cyan);
 
-		sf::String* play = new sf::String("New Game");
-		sf::String* control = new sf::String("Control");
-		sf::String* highscores = new sf::String("High Scores");
-		sf::String* exit = new sf::String("Exit");
+        sf::Text *play = new sf::Text();
+        play->setString("New Game");
+        sf::Text *control = new sf::Text();
+        control->setString("Control");
+        sf::Text *highscores = new sf::Text();
+        highscores->setString("High Scores");
+        sf::Text *exit = new sf::Text();
+        exit->setString("Exit");
 
-		sf::Font* font = GlobalFontManager.Get(TRON);
-		if(font)
-		{
-			play->SetFont(*font);
-			control->SetFont(*font);
-			highscores->SetFont(*font);
-			exit->SetFont(*font);
-		}
+        sf::Font *font = GlobalFontManager.Get(TRON);
+        if (font)
+        {
+            play->setFont(*font);
+            control->setFont(*font);
+            highscores->setFont(*font);
+            exit->setFont(*font);
+        }
 
-		AlignCenter(*play);
-		AlignCenter(*control);
-		AlignCenter(*highscores);
-		AlignCenter(*exit);
+        AlignCenter(*play);
+        AlignCenter(*control);
+        AlignCenter(*highscores);
+        AlignCenter(*exit);
 
-		float posX = GAME_WIDTH/2.f;
+        float posX = GAME_WIDTH / 2.f;
 
-		play->SetPosition(posX, 290);
-		control->SetPosition(posX, 360);
-		highscores->SetPosition(posX, 430);
-		exit->SetPosition(posX, 500);
+        play->setPosition(posX, 290);
+        control->setPosition(posX, 360);
+        highscores->setPosition(posX, 430);
+        exit->setPosition(posX, 500);
 
-		PushItem(play, Choose::NewGame);
-		PushItem(control, Choose::Control);
-		PushItem(highscores, Choose::HighScores);
-		PushItem(exit, Choose::Exit);
+        PushItem(play, Choose::NewGame);
+        PushItem(control, Choose::Control);
+        PushItem(highscores, Choose::HighScores);
+        PushItem(exit, Choose::Exit);
 
-		sf::Image* image;
+        sf::Texture *texture;
 
-		image = GlobalImageManager.Get(IMAGE_WALL);
-		if(image)
-		{
-			sf::Sprite* wall = new sf::Sprite(*image);
-			PushSprite(wall);
-		}
+        texture = GlobalImageManager.Get(IMAGE_WALL);
+        if (texture)
+        {
+            sf::Sprite *wall = new sf::Sprite();
+            wall->setTexture(*texture);
+            PushSprite(wall);
+        }
 
-		image = GlobalImageManager.Get(IMAGE_TETRIS);
-		if(image)
-		{
-			image->CreateMaskFromColor(sf::Color::Black);
-			sf::Sprite* tetris = new sf::Sprite(*image);
-			tetris->SetCenter(tetris->GetSubRect().GetWidth()/2.f, 0);
-			tetris->SetPosition(posX, 100);
-			PushSprite(tetris);
-		}
+        texture = GlobalImageManager.Get(IMAGE_TETRIS);
+        if (texture)
+        {
+            texture->setSmooth(false);
+            sf::Sprite *tetris = new sf::Sprite();
+            tetris->setTexture(*texture);
+            tetris->setTextureRect(sf::IntRect(0, 0, texture->getSize().x, texture->getSize().y));
+            tetris->setOrigin(tetris->getLocalBounds().width / 2.f, 0);
+            tetris->setPosition(posX, 100);
+            PushSprite(tetris);
+        }
 
-		sf::String* author = new sf::String("Programmed by Nguyen");
-		author->SetSize(16);
-		author->SetColor(sf::Color::Black);
-		author->SetPosition(GAME_WIDTH - 2, GAME_HEIGHT - 22);
-		AlignRight(*author);
+        sf::Text *author = new sf::Text();
+        author->setString("Programmed by Nguyen");
+        author->setCharacterSize(16);
+        author->setFillColor(sf::Color::Black);
+        author->setPosition(GAME_WIDTH - 2, GAME_HEIGHT - 22);
+        AlignRight(*author);
 
-		PushTitle(author);
-	}
+        PushTitle(author);
+    }
 };
 
 #endif

@@ -45,27 +45,27 @@
 // FILE LOCATION
 //////////////////////////////////////////////////////////////////////////
 // ICON
-#define ICON "data\\image\\logo.png"
+#define ICON "data/image/logo.png"
 // IMAGE
-#define IMAGE_TETRIS "data\\image\\tetris.png"
-#define IMAGE_PIECE "data\\image\\piece.png"
-#define IMAGE_TEXTURE "data\\image\\wall.png"
-#define IMAGE_WALL "data\\image\\blank_wall.png"
+#define IMAGE_TETRIS "data/image/tetris.png"
+#define IMAGE_PIECE "data/image/piece.png"
+#define IMAGE_TEXTURE "data/image/wall.png"
+#define IMAGE_WALL "data/image/blank_wall.png"
 // HIGH SCORES
-#define HIGH_SCORES "data\\highscores.ngn"
+#define HIGH_SCORES "data/highscores.ngn"
 // FONT
-#define TRON "data\\font\\tron.ttf"
-#define TRANSFORMERS "data\\font\\transformers.ttf"
+#define TRON "data/font/tron.ttf"
+#define TRANSFORMERS "data/font/transformers.ttf"
 // SFX TRACK
-#define SFX_TETRIS "data\\sfx\\tracks\\game.ogg"
+#define SFX_TETRIS "data/sfx/tracks/game.ogg"
 // SFX SOUND
-#define SFX_MENU_CHOOSE "data\\sfx\\sounds\\menu_choose.ogg"
-#define SFX_MENU_ENTER "data\\sfx\\sounds\\menu_enter.ogg"
-#define SFX_ROTATE "data\\sfx\\sounds\\rotate.ogg"
-#define SFX_FILL "data\\sfx\\sounds\\fill.ogg"
-#define SFX_DELETE "data\\sfx\\sounds\\delete.ogg"
-#define SFX_LEVEL_UP "data\\sfx\\sounds\\level_up.ogg"
-#define SFX_GAME_OVER "data\\sfx\\sounds\\game_over.ogg"
+#define SFX_MENU_CHOOSE "data/sfx/sounds/menu_choose.ogg"
+#define SFX_MENU_ENTER "data/sfx/sounds/menu_enter.ogg"
+#define SFX_ROTATE "data/sfx/sounds/rotate.ogg"
+#define SFX_FILL "data/sfx/sounds/fill.ogg"
+#define SFX_DELETE "data/sfx/sounds/delete.ogg"
+#define SFX_LEVEL_UP "data/sfx/sounds/level_up.ogg"
+#define SFX_GAME_OVER "data/sfx/sounds/game_over.ogg"
 //////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////

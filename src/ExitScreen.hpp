@@ -6,50 +6,54 @@
 class ExitScreen : public MenuScreen
 {
 public:
-	ExitScreen() : MenuScreen()
-	{
-		SetKeyNext(sf::Key::Left);
-		SetKeyPrev(sf::Key::Right);
+    ExitScreen() : MenuScreen()
+    {
+        SetKeyNext(sf::Keyboard::Left);
+        SetKeyPrev(sf::Keyboard::Right);
 
-		SetNormalColor(sf::Color::Black);
-		SetChooseColor(sf::Color::Cyan);
+        SetNormalColor(sf::Color::Black);
+        SetChooseColor(sf::Color::Cyan);
 
-		sf::String* yes = new sf::String("YES");
-		sf::String* no = new sf::String("NO");
-		sf::String* title = new sf::String("EXIT GAME");
+        sf::Text* yes = new sf::Text();
+        yes->setString("YES");
+        sf::Text* no = new sf::Text();
+        no->setString("NO");
+        sf::Text* title = new sf::Text();
+        title->setString("EXIT GAME");
 
-		sf::Font* font = GlobalFontManager.Get(TRON);
-		if(font)
-		{
-			yes->SetFont(*font);
-			no->SetFont(*font);
-			title->SetFont(*font);
-		}
-		
-		AlignRight(*yes);
-		AlignLeft(*no);
-		AlignCenter(*title);
+        sf::Font* font = GlobalFontManager.Get(TRON);
+        if (font)
+        {
+            yes->setFont(*font);
+            no->setFont(*font);
+            title->setFont(*font);
+        }
 
-		float posX = GAME_WIDTH/2.f, posY = GAME_HEIGHT/2.f;
+        AlignRight(*yes);
+        AlignLeft(*no);
+        AlignCenter(*title);
 
-		yes->SetPosition(posX - 20, posY - 100);
-		no->SetPosition(posX + 20, posY - 100);
+        float posX = GAME_WIDTH / 2.f, posY = GAME_HEIGHT / 2.f;
 
-		title->SetPosition(posX, 100);
-		title->SetColor(sf::Color::Black);
+        yes->setPosition(posX - 20, posY - 100);
+        no->setPosition(posX + 20, posY - 100);
 
-		PushItem(no, Choose::Previous);
-		PushItem(yes, Choose::Closed);
+        title->setPosition(posX, 100);
+        title->setFillColor(sf::Color::Black);
 
-		PushTitle(title);
+        PushItem(no, Choose::Previous);
+        PushItem(yes, Choose::Closed);
 
-		sf::Image* image = GlobalImageManager.Get(IMAGE_WALL);
-		if(image)
-		{
-			sf::Sprite* wall = new sf::Sprite(*image);
-			PushSprite(wall);
-		}
-	}
+        PushTitle(title);
+
+        sf::Texture* texture = GlobalImageManager.Get(IMAGE_WALL);
+        if (texture)
+        {
+            sf::Sprite* wall = new sf::Sprite();
+            wall->setTexture(*texture);
+            PushSprite(wall);
+        }
+    }
 };
 
 #endif
