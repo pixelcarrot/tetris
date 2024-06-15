@@ -2,12 +2,17 @@
 #define FONTMANAGER_HPP
 
 #include <SFML/Graphics.hpp>
-#include "ResourceManager.hpp"
+#include <string>
+#include <unordered_map>
 
-class FontManager : public ResourceManager<sf::Font>
+class FontManager
 {
-protected:
-	virtual sf::Font* Load(const std::string& strId);
+public:
+    sf::Font* Get(const std::string& strId);
+    // Other existing methods...
+
+private:
+    std::unordered_map<std::string, sf::Font*> fonts;
 };
 
 extern FontManager GlobalFontManager;

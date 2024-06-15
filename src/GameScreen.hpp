@@ -10,40 +10,40 @@
 class GameScreen : public Screen
 {
 private:
-	sf::Music sfxTetris;
-	sf::Sound sfxLevelUp, sfxRotate, sfxFill, sfxDelete, sfxGameOver;
+    sf::Music sfxTetris;
+    sf::Sound sfxLevelUp, sfxRotate, sfxFill, sfxDelete, sfxGameOver;
 
 private:
-	static const uint16 MaxLevel = 8;
+    static const uint16 MaxLevel = 8;
 
 private:
-	PauseScreen pauseScreen;
-	Board board;
-	Piece actPiece, waitPiece;
-	float delay[MaxLevel];
-	uint16 level, lines, land;
-	uint32 score;
-	bool isPlaying;
-	sf::String txtScore, txtLevel, txtLines, txtGameOver;
-	sf::Clock clock;
-	sf::Sprite textureTop, textureBot, wallTop, wallBot;	
+    PauseScreen pauseScreen;
+    Board board;
+    Piece actPiece, waitPiece;
+    float delay[MaxLevel];
+    uint16 level, lines, land;
+    uint32 score;
+    bool isPlaying;
+    sf::Text txtScore, txtLevel, txtLines, txtGameOver;
+    sf::Clock clock;
+    sf::Sprite textureTop, textureBot, wallTop, wallBot;
 
 public:
-	GameScreen();
-	virtual Choose Run(sf::RenderWindow& App);
-	void NewGame();
+    GameScreen();
+    virtual Choose Run(sf::RenderWindow &App);
+    void NewGame();
 
 private:
-	Choose GameOver(sf::RenderWindow& App);
-	void Control(const sf::Event::KeyEvent& Key);
-	void InitializeSound();
-	void InitializeWall();
-	void InitializeInfo();
-	void NextPiece();
-	void NextLevel();
-	void RefreshLevel();
-	void RefreshScore();
-	void RefreshLines();
+    Choose GameOver(sf::RenderWindow &App);
+    void Control(const sf::Event::KeyEvent &Key);
+    void InitializeSound();
+    void InitializeWall();
+    void InitializeInfo();
+    void NextPiece();
+    void NextLevel();
+    void RefreshLevel();
+    void RefreshScore();
+    void RefreshLines();
 };
 
 #endif

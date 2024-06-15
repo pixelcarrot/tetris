@@ -2,20 +2,25 @@
 #define IMAGERECT_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Constant.hpp"
-#include "Setting.hpp"
+#include "Constant.hpp"  // Ensure Constant.hpp is included to use SIZE_BRICK
+#include <array>
+
+// Comment out this line if SIZE_BRICK is already defined in Constant.hpp
+// const int SIZE_BRICK = 32;
 
 class ImageRect
 {
 public:
-	ImageRect();
-	sf::IntRect Effect;
-	sf::IntRect Bricks[7];
-	sf::IntRect Pieces[7][4];
+    ImageRect();
+
+    std::array<std::array<sf::IntRect, 4>, 7> Pieces;
+    std::array<sf::IntRect, 7> Bricks;
+    sf::IntRect Effect;
+
 private:
-	void InitializePieces();
-	void InitializeBricks();
-	void InitializeEffect();
+    void InitializePieces();
+    void InitializeBricks();
+    void InitializeEffect();
 };
 
 extern ImageRect GlobalImageRect;

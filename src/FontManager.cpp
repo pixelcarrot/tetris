@@ -2,13 +2,19 @@
 
 FontManager GlobalFontManager;
 
-sf::Font* FontManager::Load(const std::string& strId)
+sf::Font* FontManager::Get(const std::string& strId)
 {
-	sf::Font* font = new sf::Font;
-	if(!font->LoadFromFile(strId))
-	{
-		delete font;
-		font = NULL;
-	}
-	return font;
+    auto it = fonts.find(strId);
+    if (it != fonts.end())
+    {
+        return it->second;
+    }
+    sf::Font* font = new sf::Font;
+    if (!font->loadFromFile(strId))
+    {
+        delete font;
+        return nullptr;
+    }
+    fonts[strId] = font;
+    return font;
 }

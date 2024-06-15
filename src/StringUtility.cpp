@@ -1,16 +1,19 @@
 #include "StringUtility.hpp"
 
-void AlignLeft(sf::String& Text)
+void AlignLeft(sf::Text& Text)
 {
-	Text.SetCenter(0, 0);
+    sf::FloatRect textRect = Text.getLocalBounds();  // Get the local bounds of the text
+    Text.setOrigin(0, textRect.top);  // Align left by setting the origin to the top-left corner
 }
 
-void AlignRight(sf::String& Text)
+void AlignRight(sf::Text& Text)
 {
-	Text.SetCenter(Text.GetRect().GetWidth(), 0);
+    sf::FloatRect textRect = Text.getLocalBounds();  // Get the local bounds of the text
+    Text.setOrigin(textRect.width, textRect.top);  // Align right by setting the origin to the top-right corner
 }
 
-void AlignCenter(sf::String& Text)
+void AlignCenter(sf::Text& Text)
 {
-	Text.SetCenter(Text.GetRect().GetWidth()/2.f, 0);
+    sf::FloatRect textRect = Text.getLocalBounds();  // Get the local bounds of the text
+    Text.setOrigin(textRect.width / 2.f, textRect.top);  // Align center by setting the origin to the top-center
 }
