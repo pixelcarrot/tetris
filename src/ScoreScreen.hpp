@@ -5,47 +5,49 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
+#include <SFML/Graphics.hpp>
 #include "Screen.hpp"
 
 class ScoreScreen : public Screen
 {
 public:
-	typedef std::pair<uint32, int16> ScoreInfo;
+    typedef std::pair<uint32_t, int16_t> ScoreInfo;
 
 private:
-	static const uint16 MAX = 10;
-	static std::vector<ScoreInfo> v;
+    static const uint16_t MAX = 10;
+    static std::vector<ScoreInfo> v;
 
-	struct ScorePacket
-	{
-		uint32 score;
-		std::string name;
-	} scorePacket[MAX];
+    struct ScorePacket
+    {
+        uint32_t score;
+        std::string name;
+    } scorePacket[MAX];
 
-	struct myclass {
-		bool operator() (const ScorePacket& i, const ScorePacket& j) { return (i.score > j.score);}
-	} ScoreCompare;
-	
+    struct myclass {
+        bool operator() (const ScorePacket& i, const ScorePacket& j) { return (i.score > j.score);}
+    } ScoreCompare;
+
 private:
-	sf::Sprite wall;
-	sf::String saveName, saveTitle, scoreTitle;
-	sf::String rank[10], name[10], score[10];
-	uint16 Size;
+    sf::Sprite wall;
+    sf::Text saveName, saveTitle, scoreTitle;
+    sf::Text rank[10], name[10], score[10];
+    uint16_t Size;
 
 public:
-	ScoreScreen();
-	virtual Choose Run(sf::RenderWindow& App);
-	void Read();
-	void Write();
+    ScoreScreen();
+    virtual Choose Run(sf::RenderWindow& App);
+    void Read();
+    void Write();
 
 private:
-	void Refresh();
-	bool IsSave();
-	int16 SaveScore(sf::RenderWindow& App);
+    void Refresh();
+    bool IsSave();
+    int16_t SaveScore(sf::RenderWindow& App);
 
 public:
-	static void NewScore(const uint32& Number, const int16& ProID);
+    static void NewScore(const uint32_t& Number, const int16_t& ProID);
 };
 
 #endif

@@ -7,7 +7,7 @@
 class SoundBufferManager : public ResourceManager<sf::SoundBuffer>
 {
 protected:
-	virtual sf::SoundBuffer* Load(const std::string& strId);
+    virtual sf::SoundBuffer* Load(const std::string& strId) override;
 };
 
 extern SoundBufferManager GlobalSoundBufferManager;

@@ -6,50 +6,54 @@
 class PauseScreen : public MenuScreen
 {
 public:
-	PauseScreen() : MenuScreen()
-	{
-		SetKeyNext(sf::Key::Down);
-		SetKeyPrev(sf::Key::Up);
+    PauseScreen() : MenuScreen()
+    {
+        SetKeyNext(sf::Keyboard::Down);
+        SetKeyPrev(sf::Keyboard::Up);
 
-		SetNormalColor(sf::Color::Black);
-		SetChooseColor(sf::Color::Cyan);
-		
-		sf::String* continue_ptr = new sf::String("Continue");
-		sf::String* quit_ptr = new sf::String("Quit");
-		sf::String* title = new sf::String("PAUSE");
+        SetNormalColor(sf::Color::Black);
+        SetChooseColor(sf::Color::Cyan);
 
-		sf::Font* font = GlobalFontManager.Get(TRON);
-		if(font)
-		{
-			continue_ptr->SetFont(*font);
-			quit_ptr->SetFont(*font);
-			title->SetFont(*font);
-		}
+        sf::Text *continue_ptr = new sf::Text();
+        continue_ptr->setString("Continue");
+        sf::Text *quit_ptr = new sf::Text();
+        quit_ptr->setString("Quit");
+        sf::Text *title = new sf::Text();
+        title->setString("PAUSE");
 
-		AlignCenter(*continue_ptr);
-		AlignCenter(*quit_ptr);
-		AlignCenter(*title);
+        sf::Font *font = GlobalFontManager.Get(TRON);
+        if (font)
+        {
+            continue_ptr->setFont(*font);
+            quit_ptr->setFont(*font);
+            title->setFont(*font);
+        }
 
-		float posX = GAME_WIDTH/2.f;
+        AlignCenter(*continue_ptr);
+        AlignCenter(*quit_ptr);
+        AlignCenter(*title);
 
-		continue_ptr->SetPosition(posX, 200);
-		quit_ptr->SetPosition(posX, 270);
+        float posX = GAME_WIDTH / 2.f;
 
-		title->SetPosition(posX, 100);
-		title->SetColor(sf::Color::Black);
+        continue_ptr->setPosition(posX, 200);
+        quit_ptr->setPosition(posX, 270);
 
-		PushItem(continue_ptr, Choose::Previous);
-		PushItem(quit_ptr, Choose::Quit);
+        title->setPosition(posX, 100);
+        title->setFillColor(sf::Color::Black);
 
-		PushTitle(title);
+        PushItem(continue_ptr, Choose::Previous);
+        PushItem(quit_ptr, Choose::Quit);
 
-		sf::Image* image = GlobalImageManager.Get(IMAGE_WALL);
-		if(image)
-		{
-			sf::Sprite* wall = new sf::Sprite(*image);
-			PushSprite(wall);
-		}
-	}
+        PushTitle(title);
+
+        sf::Texture *texture = GlobalImageManager.Get(IMAGE_WALL);
+        if (texture)
+        {
+            sf::Sprite *wall = new sf::Sprite();
+            wall->setTexture(*texture);
+            PushSprite(wall);
+        }
+    }
 };
 
 #endif

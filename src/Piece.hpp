@@ -2,7 +2,7 @@
 #define PIECE_HPP
 
 #include <SFML/Graphics.hpp>
-
+#include <SFML/System.hpp>  // Include this for sf::Clock
 #include "ImageManager.hpp"
 #include "ImageRect.hpp"
 #include "Constant.hpp"
@@ -11,40 +11,40 @@
 class Piece
 {
 private:
-	sf::Clock clock;
-	sf::Sprite sprite;
-	int16 (*matrix)[COL_MATRIX];
-	int16 idAngle, x, y, type;
-	bool isStop;
-	
+    sf::Clock clock;
+    sf::Sprite sprite;
+    int16_t (*matrix)[COL_MATRIX];
+    int16_t idAngle, x, y, type;
+    bool isStop;
+
 public:
-	Piece();
-	void SetType(int16 Type);
-	void LoadMatrix(int16 Matrix[][COL_MATRIX]);
-	void Draw(sf::RenderWindow& App);
-	void PosAct();
-	void PosWait();
-	void MoveLeft();
-	void MoveRight();
-	void RotateLeft();
-	void RotateRight();
-	void SoftDrop();
-	void HardDrop();
-	void DelayDrop(float Delay);
-	bool IsStop();
-	int16 GetX();
-	int16 GetY();
-	int16 GetType();
-	int16 GetIdAngle();
+    Piece();
+    void SetType(int16_t Type);
+    void LoadMatrix(int16_t Matrix[][COL_MATRIX]);
+    void Draw(sf::RenderWindow& App);
+    void PosAct();
+    void PosWait();
+    void MoveLeft();
+    void MoveRight();
+    void RotateLeft();
+    void RotateRight();
+    void SoftDrop();
+    void HardDrop();
+    void DelayDrop(float Delay);
+    bool IsStop();
+    int16_t GetX();
+    int16_t GetY();
+    int16_t GetType();
+    int16_t GetIdAngle();
 
 private:
-	void InitializeSprite();
-	bool IsCollision(int16 X, int16 Y, int16 IdAngle);
-	bool IsCollisionLeft();
-	bool ISCollisionRight();
-	bool IsCollisionDown();
-	bool IsCollisionRotateLeft();
-	bool IsCollisionRotateRight();
+    void InitializeSprite();
+    bool IsCollision(int16_t X, int16_t Y, int16_t IdAngle);
+    bool IsCollisionLeft();
+    bool IsCollisionRight();
+    bool IsCollisionDown();
+    bool IsCollisionRotateLeft();
+    bool IsCollisionRotateRight();
 };
 
 #endif

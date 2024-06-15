@@ -2,15 +2,19 @@
 
 ImageManager GlobalImageManager;
 
-sf::Image* ImageManager::Load(const std::string& strId)
+sf::Texture* ImageManager::Get(const std::string& strId)
 {
-	sf::Image* image = new sf::Image;
-	if(!image->LoadFromFile(strId))
-	{
-		delete image;
-		image = NULL;
-	}
-	if(image != NULL)
-		image->SetSmooth(false);
-	return image;
+    auto it = textures.find(strId);
+    if (it != textures.end())
+    {
+        return it->second;
+    }
+    sf::Texture* texture = new sf::Texture;
+    if (!texture->loadFromFile(strId))
+    {
+        delete texture;
+        return nullptr;
+    }
+    textures[strId] = texture;
+    return texture;
 }

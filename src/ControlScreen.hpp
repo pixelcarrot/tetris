@@ -6,85 +6,86 @@
 class ControlScreen : public Screen
 {
 private:
-	sf::Sprite wall;
-	sf::String left[7], right[7], title;
+    sf::Sprite wall;
+    sf::Text left[7], right[7], title;
+
 public:
-	ControlScreen() : Screen()
-	{
-		sf::Image* image = GlobalImageManager.Get(IMAGE_WALL);
-		if(image)
-			wall.SetImage(*image);
+    ControlScreen() : Screen()
+    {
+        sf::Texture* texture = GlobalImageManager.Get(IMAGE_WALL);  // Use sf::Texture
+        if (texture)
+            wall.setTexture(*texture);
 
-		title.SetText("CONTROL KEYS");
+        title.setString("CONTROL KEYS");
 
-		left[0].SetText("Left arrow");
-		left[1].SetText("Right arrow");
-		left[2].SetText("Down arrow");
-		left[3].SetText("Z");
-		left[4].SetText("X");
-		left[5].SetText("Space");
-		left[6].SetText("ESC");
+        left[0].setString("Left arrow");
+        left[1].setString("Right arrow");
+        left[2].setString("Down arrow");
+        left[3].setString("Z");
+        left[4].setString("X");
+        left[5].setString("Space");
+        left[6].setString("ESC");
 
-		right[0].SetText("- Move left");
-		right[1].SetText("- Move right");
-		right[2].SetText("- Soft drop");
-		right[3].SetText("- Rotate left");
-		right[4].SetText("- Rotate right");
-		right[5].SetText("- Hard drop");
-		right[6].SetText("- Escape / Pause");
+        right[0].setString("- Move left");
+        right[1].setString("- Move right");
+        right[2].setString("- Soft drop");
+        right[3].setString("- Rotate left");
+        right[4].setString("- Rotate right");
+        right[5].setString("- Hard drop");
+        right[6].setString("- Escape / Pause");
 
-		float posX = GAME_WIDTH/2.f;
-		float posY;
+        float posX = GAME_WIDTH / 2.f;
+        float posY;
 
-		sf::Font* font = GlobalFontManager.Get(TRON);
-		if(font)
-			title.SetFont(*font);
+        sf::Font* font = GlobalFontManager.Get(TRON);
+        if (font)
+            title.setFont(*font);
 
-		AlignCenter(title);
-		title.SetPosition(posX, 100);
-		title.SetColor(sf::Color::Black);
+        AlignCenter(title);
+        title.setPosition(posX, 100);
+        title.setFillColor(sf::Color::Black);
 
-		for(int16 i = 0; i < 7; ++i)
-		{
-			posY = i * 50 + 200;
-			AlignRight(left[i]);
-			AlignLeft(right[i]);
-			left[i].SetPosition(posX - 15, posY);
-			right[i].SetPosition(posX, posY);
-			left[i].SetColor(sf::Color::Black);
-			right[i].SetColor(sf::Color::Black);
-		}
-	}
+        for (int16_t i = 0; i < 7; ++i)
+        {
+            posY = i * 50 + 200;
+            AlignRight(left[i]);
+            AlignLeft(right[i]);
+            left[i].setPosition(posX - 15, posY);
+            right[i].setPosition(posX, posY);
+            left[i].setFillColor(sf::Color::Black);
+            right[i].setFillColor(sf::Color::Black);
+        }
+    }
 
-	virtual Choose Run(sf::RenderWindow& App)
-	{
-		sf::Event e;
-		while(true)
-		{
-			while(App.GetEvent(e))
-			{
-				if(e.Type == sf::Event::Closed)
-					return Choose::Closed;
+    virtual Choose Run(sf::RenderWindow& App)
+    {
+        sf::Event e;
+        while (true)
+        {
+            while (App.pollEvent(e))
+            {
+                if (e.type == sf::Event::Closed)
+                    return Choose::Closed;
 
-				if(e.Type == sf::Event::KeyPressed && e.Key.Code == sf::Key::Escape)
-					return Choose::Previous;
-			}
+                if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Escape)
+                    return Choose::Previous;
+            }
 
-			App.Clear();
+            App.clear();
 
-			App.Draw(wall);
+            App.draw(wall);
 
-			App.Draw(title);
+            App.draw(title);
 
-			for(int16 i = 0; i < 7; ++i)
-			{
-				App.Draw(left[i]);
-				App.Draw(right[i]);
-			}
+            for (int16_t i = 0; i < 7; ++i)
+            {
+                App.draw(left[i]);
+                App.draw(right[i]);
+            }
 
-			App.Display();
-		}
-	}
+            App.display();
+        }
+    }
 };
 
 #endif
