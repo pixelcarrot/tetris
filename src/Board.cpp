@@ -1,6 +1,7 @@
 #include "Board.hpp"
 #include <algorithm>
 #include <cstring>
+#include <cstdint>
 
 bool IsGreater(int16_t i, int16_t j)
 {

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <cstdint>
 
 #include <SFML/Graphics.hpp>
 #include "Screen.hpp"

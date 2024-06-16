@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>  // Include this for sf::Clock
+#include <cstdint>
 #include "ImageManager.hpp"
 #include "ImageRect.hpp"
 #include "Constant.hpp"

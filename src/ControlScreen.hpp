@@ -2,6 +2,7 @@
 #define CONTROLSCREEN_HPP
 
 #include "Screen.hpp"
+#include <cstdint>
 
 class ControlScreen : public Screen
 {

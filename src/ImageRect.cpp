@@ -1,4 +1,5 @@
 #include "ImageRect.hpp"
+#include <cstdint>
 
 ImageRect GlobalImageRect;
 

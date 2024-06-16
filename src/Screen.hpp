@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <cstdint>
 
 #include "Constant.hpp"
 #include "Setting.hpp"
